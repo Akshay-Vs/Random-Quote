@@ -4,9 +4,13 @@ const Upload = () => {
   const [quote, setQuote] = useState("");
   const [author, setAuthor] = useState("");
   const [category, setCategory] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    
+    setIsSubmitting(true); // Disable the button
+
     fetch("/api/postQuote", {
       method: "POST",
       body: JSON.stringify({
@@ -21,6 +25,8 @@ const Upload = () => {
         setAuthor("");
         setCategory("");
       }
+
+      setIsSubmitting(false); // Enable the button
     });
   };
 
@@ -30,7 +36,7 @@ const Upload = () => {
         <h1 className="text-5xl font-bold text-center text-gray-400 mb-10">
           Upload a Quote
         </h1>
-        <form className="flex justify-center align-middle flex-col">
+        <form className="flex justify-center align-middle flex-col" onSubmit={handleSubmit}>
           <label className="text-xl font-bold text-center w-full text-gray-400">
             Quote
             <input
@@ -72,10 +78,10 @@ const Upload = () => {
           <br />
           <button
             type="submit"
-            onClick={handleSubmit}
+            disabled={isSubmitting} // Disable the button when isSubmitting is true
             className="mt-4 px-4 py-2 text-gray-400 font-bold bg-slate-700 rounded-lg hover:bg-slate-800"
           >
-            Submit
+            {isSubmitting ? "Submitting..." : "Submit"}
           </button>
         </form>
       </div>
