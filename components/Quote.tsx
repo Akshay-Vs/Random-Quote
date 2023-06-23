@@ -21,7 +21,7 @@ const Quote = (RandomQuote: Quote) => {
       setTimeout(() => {
         setFade(false);
       }, 1400);
-    }, 5000);
+    }, 6000);
 
     return () => {
       clearInterval(interval);
@@ -37,14 +37,14 @@ const Quote = (RandomQuote: Quote) => {
         style={{height: "calc(80vh - 6rem)"}}
       >
         <div className="flex flex-col justify-center items-center mt-10 w-5/6">
-          <h1 className="text-5xl font-bold text-center text-slate-50 mb-10">
+          <h1 className="lg:text-5xl md:text-4xl sm:text-3xl font-bold text-center text-slate-50 mb-10 ">
             &quot;{RandomQuote.quote}&quot;
           </h1>
-          <h2 className="text-xl font-bold text-center w-full text-slate-50">
+          <h2 className="lg:text-xl md:text-sm font-bold text-center w-full text-slate-50 ">
             - {RandomQuote.author}
           </h2>
 
-          <h3 className="text-xl font-bold text-center w-full text-slate-400 opacity-50">
+          <h3 className="lg:text-xl md:text-lg sm:text-sm font-bold text-center w-full text-slate-400 opacity-50">
             {RandomQuote.category}
           </h3>
         </div>
