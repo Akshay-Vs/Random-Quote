@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -16,21 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav className="text-white font-bold flex justify-between items-center mx-1 h-16 ">
-          <a
-            className="mr-10 text-lg hover:text-gray-400 px-6 py-2 rounded-xl  bg-gray-900 transition-colors"
-            href="/"
-          >
-            Home
-          </a>
-          <a
-            className="ml-10 text-lg hover:text-gray-400 px-6 py-2 rounded-xl  bg-gray-900 transition-colors"
-            href="/upload"
-          >
-            Upload
-          </a>
-        </nav>
-
+        <Navbar />
         {children}
       </body>
     </html>
