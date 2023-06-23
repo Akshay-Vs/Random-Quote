@@ -1,4 +1,4 @@
-import Quote from "./components/Quote";
+import Quote from "@/components/Quote";
 import { getRandomQuote } from "@/lib/getRandomQuote";
 
 export default async function Home() {
