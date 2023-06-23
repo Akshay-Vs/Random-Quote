@@ -72,7 +72,7 @@ const Upload = () => {
           <br />
           <button
             type="submit"
-            onClick={handleSubmit}
+            onClick={()=> handleSubmit}
             className="mt-4 px-4 py-2 text-gray-400 font-bold bg-slate-700 rounded-lg hover:bg-slate-800"
           >
             Submit
