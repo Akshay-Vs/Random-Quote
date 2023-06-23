@@ -1,31 +1,40 @@
 "use client";
-import { Poppins, Roboto } from "next/font/google";
-
-const roboto = Roboto({
-  subsets: ["latin"],
-  display: "swap",
-  weight: "400",
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  display: "swap",
-  weight: "400",
-});
-
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Quote = (RandomQuote: Quote) => {
   const router = useRouter();
   const [fade, setFade] = useState(false);
+  const [data, setData] = useState(0);
+
+  useEffect(() => {
+    const fetchData = () => {
+      setData(data + 1);
+    };
+
+    const interval = setInterval(() => {
+      fetchData();
+      setFade(true);
+      setTimeout(() => {
+        router.refresh();
+      }, 700);
+      setTimeout(() => {
+        setFade(false);
+      }, 1400);
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [data]);
 
   return (
     <>
       <section
-        className={`flex flec-col justify-center items-center mt-10 transition-opacity ease-in-out duration-1000 h-96 ${
-          fade ? "opacity-0" : "opacity-100"
+        className={`flex flec-col justify-center items-center transition-opacity ease-in-out duration-1000 h-full ${
+          fade ? "opacity-0 " : "opacity-100"
         }`}
+        style={{height: "calc(80vh - 6rem)"}}
       >
         <div className="flex flex-col justify-center items-center mt-10 w-5/6">
           <h1 className="text-5xl font-bold text-center text-slate-50 mb-10">
@@ -40,27 +49,6 @@ const Quote = (RandomQuote: Quote) => {
           </h3>
         </div>
       </section>
-      <div
-        className={`flex flex-col justify-start mt-10 items-center flec-col transition-opacity ease-in-out duration-1000 h-96 ${
-          fade ? "opacity-0" : "opacity-100"
-        }`}
-      >
-        <button
-          type="submit"
-          className="mt-1 bg-slate-50 text-black font-bold py-2 px-4 rounded-full transition-opacity ease-in-out duration-1000 hover:opacity-50 active:scale-105"
-          onClick={() => {
-            setFade(true);
-            setTimeout(() => {
-              router.refresh();
-            }, 700);
-            setTimeout(() => {
-              setFade(false);
-            }, 1400);
-          }}
-        >
-          Refresh
-        </button>
-      </div>
     </>
   );
 };
