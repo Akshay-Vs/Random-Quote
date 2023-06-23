@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1687521877492,
+      "tag": "0000_marvelous_screwball",
+      "breakpoints": true
+    }
+  ]
+}
