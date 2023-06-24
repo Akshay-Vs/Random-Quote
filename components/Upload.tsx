@@ -8,7 +8,7 @@ const Upload = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
+
     setIsSubmitting(true); // Disable the button
 
     fetch("/api/postQuote", {
@@ -34,28 +34,19 @@ const Upload = () => {
     <div className="flex flex-col justify-center items-center mt-10 transition-opacity ease-in-out duration-1000 h-96 ">
       <div className="flex flex-col justify-center items-center mt-10 w-5/6 p-8 rounded-lg shadow-lg">
         <h1 className="text-5xl font-bold text-center text-gray-400 mb-10">
-          Upload a Quote
+          Upload Your Thoughts
         </h1>
-        <form className="flex justify-center align-middle flex-col" onSubmit={handleSubmit}>
-          <label className="text-xl font-bold text-center w-full text-gray-400">
-            Quote
-            <input
-              type="text"
-              name="quote"
-              value={quote}
-              onChange={(e) => setQuote(e.target.value)}
-              required
-              className="mt-2 w-full text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-300"
-            />
-          </label>
-
-          <br />
-          <label className="text-xl font-bold text-center w-full text-gray-400">
-            Author
+        <form
+          className="flex justify-center align-middle flex-col"
+          onSubmit={handleSubmit}
+        >
+          <label className="text-xl font-bold text-left w-full text-gray-400">
+            Who are you?
             <input
               type="text"
               name="author"
               value={author}
+              placeholder="Enter a name"
               onChange={(e) => setAuthor(e.target.value)}
               required
               className="mt-2 w-full text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-300"
@@ -63,12 +54,28 @@ const Upload = () => {
           </label>
 
           <br />
-          <label className="text-xl font-bold text-center w-full text-gray-400">
-            Category
+          <label className="text-xl font-bold text-left w-full text-gray-400">
+            What are you thingking about?
+            <input
+              type="text"
+              name="quote"
+              value={quote}
+              placeholder="Enter your thoughts"
+              onChange={(e) => setQuote(e.target.value)}
+              required
+              className="mt-2 w-full text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-300"
+            />
+          </label>
+
+          <br />
+          
+          <label className="text-xl font-bold text-left w-full text-gray-400">
+            What is it about?
             <input
               type="text"
               name="category"
               value={category}
+              placeholder="ie: Life, Love, etc."
               onChange={(e) => setCategory(e.target.value)}
               required
               className="mt-2 w-full text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-300"

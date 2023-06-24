@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -31,7 +32,8 @@ const Navbar = () => {
         className="mr-10 text-lg hover:text-gray-400 px-6 py-2 rounded-xl  bg-gray-900 transition-colors cursor-pointer mx-5"
         onClick={handleClick}
       >
-        {page}
+        {page} &nbsp;
+        {path == "/" && <FontAwesomeIcon icon={faPenToSquare} />}
       </div>
       <div className="mx-5">
         <Link href="https://www.github.com/Akshay-Vs" target="_blank">
