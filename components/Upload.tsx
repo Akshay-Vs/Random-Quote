@@ -20,7 +20,7 @@ const Upload = () => {
       }),
     }).then((res) => {
       if (res.ok) {
-        alert("Quote uploaded successfully!");
+        alert("Uploaded successfully!");
         setQuote("");
         setAuthor("");
         setCategory("");
