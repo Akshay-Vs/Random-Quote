@@ -5,6 +5,7 @@ const Upload = () => {
   const [author, setAuthor] = useState("");
   const [category, setCategory] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -20,10 +21,13 @@ const Upload = () => {
       }),
     }).then((res) => {
       if (res.ok) {
-        alert("Uploaded successfully!");
+        setIsSuccess(true);
         setQuote("");
         setAuthor("");
         setCategory("");
+        setTimeout(() => {
+          setIsSuccess(false);
+        }, 3000);
       }
 
       setIsSubmitting(false); // Enable the button
@@ -33,6 +37,11 @@ const Upload = () => {
   return (
     <div className="flex flex-col justify-center items-center mt-10 transition-opacity ease-in-out duration-1000 h-96 ">
       <div className="flex flex-col justify-center items-center mt-10 w-5/6 p-8 rounded-lg shadow-lg">
+        {isSuccess && (
+          <div className="flex justify-center items-center w-80 bg-green-200 text-gray-800 text-lg font-bold rounded-lg p-4 mb-4">
+            Success!
+          </div>
+        )}
         <h1 className="text-5xl font-bold text-center text-gray-400 mb-10">
           Upload Your Thoughts
         </h1>
@@ -68,7 +77,7 @@ const Upload = () => {
           </label>
 
           <br />
-          
+
           <label className="text-xl font-bold text-left w-full text-gray-400">
             What is it about?
             <input
