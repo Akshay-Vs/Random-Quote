@@ -10,6 +10,6 @@ export default {
   out: "./drizzle",
   driver: "mysql2",
   dbCredentials: {
-    connectionString: 'mysql://syj9rp1f84oig4zzs0c2:pscale_pw_4LHHfOkXiHL0iIKtw19UQBK2rULvIggQeYTndh8dRbm@aws.connect.psdb.cloud/randomquotes?ssl={"rejectUnauthorized":true}'
+    connectionString: process.env.DATABASE_URL || ""
   },
 } satisfies Config;
